@@ -44,9 +44,21 @@ void findSCCs()
 			DFS1(i,visited,mystack);
 
 	reverse();
-
-	for(int i=0;i<V;++i)
+	stack<int> other_stack;
+	for(int i=0;i<V;++i){
 		visited[i] = false;
+		int x = mystack.top();
+		mystack.pop();
+		cout << x << ' ';
+		other_stack.push(x);	
+	}
+	cout << '\n';
+	for(int i=0;i<V;++i){
+		int x = other_stack.top();
+		other_stack.pop();
+		mystack.push(x);
+	}
+
 
 	cout<<"Strongly Connected Components are:\n";
 	while(!mystack.empty())
