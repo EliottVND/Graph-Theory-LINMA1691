@@ -15,9 +15,9 @@ def compare_files(file1, file2):
             break
         should_be = int(l1.split()[0])
         here_is = int(l2.split()[0])
-        if should_be != here_is:
-            print(f"Difference : should be {should_be} != {here_is }. Diff is {should_be - here_is}")
-        # theSame = should_be == here_is
+        # if should_be != here_is:
+        #     print(f"Difference : should be {should_be} != {here_is }. Diff is {should_be - here_is}")
+        theSame = should_be == here_is
         lineNum = lineNum+1
 
     f1.close()
