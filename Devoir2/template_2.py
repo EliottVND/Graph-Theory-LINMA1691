@@ -106,8 +106,10 @@ def min_cut(N, edges):
                 this_min_cut+=1
 
         return this_min_cut 
-   
-    iterations = 1000
+    print(N)
+    alpha = 0.9999
+    p = 2/(N*(N-1))
+    iterations = int((math.log(alpha)/math.log(1 - p))*(10**5))
     best_min_cut = math.inf
     for i in range(iterations):
         curr = karger(N, edges)
