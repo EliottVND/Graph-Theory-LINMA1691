@@ -30,12 +30,12 @@ def escape_temple(N, corridor, trap, adventurer, out):
 		res_G[v+N][u] = float("inf")
 		if res_G[u][u+N] == 0 and trap[u]:
 			is_adv = trap[u] in adventurer
-			res_G[u][u+N] = trap[u] if not is_adv else trap[u-1]
-			res_G[u+N][u] = trap[u] if not is_adv else trap[u-1]
+			res_G[u][u+N] = trap[u] if not is_adv else trap[u] - 1
+			res_G[u+N][u] = trap[u] if not is_adv else trap[u] - 1
 		if res_G[v][v+N] == 0:
 			is_adv = trap[v] in adventurer
-			res_G[v][v+N] = trap[v] if not is_adv else trap[v-1]
-			res_G[v+N][v] = trap[v] if not is_adv else trap[v-1]
+			res_G[v][v+N] = trap[v] if not is_adv else trap[v] - 1
+			res_G[v+N][v] = trap[v] if not is_adv else trap[v] - 1
 	for s in adventurer:
 		res_G[2*N][s] = float("inf")
 	for t in out:
@@ -43,7 +43,7 @@ def escape_temple(N, corridor, trap, adventurer, out):
 	# pprint(res_G)
 	g = Graph(res_G)
 	
-	return (g.FordFulkerson(2*N, 2*N+1) - len(adventurer) ) >=1
+	return (g.FordFulkerson(2*N, 2*N+1) - len(adventurer) ) >= 0
 
 def bfs(N, res_G, source, target):
     parent = [0] * N
