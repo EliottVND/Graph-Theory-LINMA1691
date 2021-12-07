@@ -45,7 +45,7 @@ def read_all_temple(filename):
 # check the code
 def run_all_test(filename,number_of_test):
     N, corridor, trap, adventurer, out, answer = read_all_temple(filename)
-    for i in range(number_of_test-3):
+    for i in range(number_of_test-2):
         res = tp.escape_temple(N[i],corridor[i],trap[i],adventurer[i],out[i])
         if res == answer[i]:
             print("Test {} réussi".format(i+1))
